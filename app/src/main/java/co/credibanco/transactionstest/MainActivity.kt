@@ -1,4 +1,4 @@
-package co.credibanco.transactions
+package co.credibanco.transactionstest
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,13 +10,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import co.credibanco.transactions.ui.theme.TransactionsTheme
+import co.credibanco.transactionstest.ui.theme.TransactionsTestTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TransactionsTheme {
+            TransactionsTestTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -40,7 +40,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    TransactionsTheme {
+    TransactionsTestTheme {
         Greeting("Android")
     }
 }

@@ -1,4 +1,4 @@
-package co.credibanco.transactions.ui.theme
+package co.credibanco.transactionstest.ui.theme
 
 import android.app.Activity
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -34,7 +34,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun TransactionsTheme(
+fun TransactionsTestTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {

@@ -1,4 +1,4 @@
-package co.credibanco.transactions
+package co.credibanco.transactionstest
 
 import org.junit.Test
 

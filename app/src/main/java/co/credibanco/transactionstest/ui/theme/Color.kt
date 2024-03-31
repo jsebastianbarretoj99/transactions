@@ -1,4 +1,4 @@
-package co.credibanco.transactions.ui.theme
+package co.credibanco.transactionstest.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

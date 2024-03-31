@@ -1,18 +1,19 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.googleKsp)
 }
 
 android {
-    namespace = "co.credibanco.transactions"
-    compileSdk = 34
+    namespace = "co.credibanco.transactionstest"
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "co.credibanco.transactions"
-        minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = "co.credibanco.transactionstest"
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        versionCode = libs.versions.android.appVersionCode.get().toInt()
+        versionName = libs.versions.android.appVersionName.get()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -30,17 +31,18 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = libs.versions.android.javaVersion.get()
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.11"
     }
     packaging {
         resources {
@@ -50,20 +52,30 @@ android {
 }
 
 dependencies {
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
+    // Compose
+    implementation(libs.bundles.compose)
     androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Coroutines
+    implementation(libs.bundles.coroutines)
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    // JUnit
+    testImplementation(libs.junit)
+
+    // Koin
+    implementation(libs.bundles.koin)
+
+    // Mockk
+    testImplementation(libs.mockk)
+
+    // Retrofit
+    implementation(libs.bundles.retrofit2)
+
+    // Room
+    implementation(libs.bundles.room)
+    ksp(libs.room.ksp)
+
+    // AndroidX Test
+    testImplementation(libs.bundles.android.test)
 }
