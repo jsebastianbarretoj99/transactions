@@ -60,6 +60,9 @@ dependencies {
     implementation(libs.bundles.coroutines)
     testImplementation(libs.kotlinx.coroutines.test)
 
+    // DataStore
+    implementation(libs.datastore)
+
     // JUnit
     testImplementation(libs.junit)
 

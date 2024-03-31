@@ -23,6 +23,9 @@ material3 = "1.2.1"
 ### Coroutines
 kotlinxCoroutinesAndroid = "1.8.0"
 
+### Datastore
+datastore = "1.0.0"
+
 ### Koin
 koin = "3.5.0"
 
@@ -58,6 +61,9 @@ kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutine
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesAndroid" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+
+### Datastore
+datastore = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
 
 ### Junit
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
