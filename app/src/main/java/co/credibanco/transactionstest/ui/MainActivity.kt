@@ -1,4 +1,4 @@
-package co.credibanco.transactionstest
+package co.credibanco.transactionstest.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

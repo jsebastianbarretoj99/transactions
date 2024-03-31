@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".BaseApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -10,12 +11,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Transactions"
-        tools:targetApi="31">
+        android:theme="@style/Theme.TransactionsTest"
+        tools:targetApi="34">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.Transactions">
+            android:theme="@style/Theme.TransactionsTest">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,5 +24,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
