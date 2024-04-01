@@ -18,6 +18,7 @@ lifecycleRuntimeKtx = "2.7.0"
 activityCompose = "1.8.2"
 compose = "1.6.4"
 composeBom = "2024.03.00"
+composeNavigation = "2.7.7"
 material3 = "1.2.1"
 
 ### Coroutines
@@ -47,7 +48,7 @@ espressoCore = "3.5.1"
 ### Compose
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
-
+androidx-compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigation" }
 androidx-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 androidx-ui-graphics = { module = "androidx.compose.ui:ui-graphics", version.ref = "compose" }
 androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
@@ -96,7 +97,7 @@ android-test = ["androidx-junit", "androidx-espresso-core"]
 compose = [
     "androidx-activity-compose", "androidx-compose-bom", "androidx-ui", "androidx-ui-graphics",
     "androidx-ui-tooling", "androidx-ui-tooling-preview", "androidx-material3",
-    "androidx-ui-test-manifest",
+    "androidx-ui-test-manifest", "androidx-compose-navigation",
 ]
 coroutines = ["androidx-core-ktx", "androidx-lifecycle-runtime-ktx", "kotlinx-coroutines-android"]
 koin = ["koin-android", "koin-androidx-compose"]
