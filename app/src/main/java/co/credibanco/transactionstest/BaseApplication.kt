@@ -1,7 +1,7 @@
 package co.credibanco.transactionstest
 
 import android.app.Application
-import co.credibanco.transactionstest.transactions.koin.TRANSACTION_MODULE
+import co.credibanco.transactionstest.datastore.koin.DATA_STORE_MODULE
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -16,7 +16,9 @@ class BaseApplication: Application() {
             if (BuildConfig.DEBUG) {
                 androidLogger(level = Level.DEBUG)
             }
-            modules(TRANSACTION_MODULE)
+            modules(
+                DATA_STORE_MODULE,
+            )
         }
     }
 }
