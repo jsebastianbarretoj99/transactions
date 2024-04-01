@@ -80,6 +80,8 @@ class MainActivity : ComponentActivity() {
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center,
                     ) {
+                        Text(text = "Testing Datastore")
+
                         Button(onClick = {
                             coroutineScope.launch {
                                 dataStoreRepository.writeData("Test", "123").collect { response ->
@@ -143,6 +145,8 @@ class MainActivity : ComponentActivity() {
                         Text(
                             text = "Value Remove: $textRemove"
                         )
+
+                        Text(text = "Testing Transactions Repository")
 
                         Button(onClick = {
                             coroutineScope.launch {
