@@ -15,7 +15,6 @@ import androidx.navigation.compose.rememberNavController
 import co.credibanco.transactionstest.ui.components.bottombar.BottomNavItem
 import co.credibanco.transactionstest.ui.components.bottombar.BottomNavItem.Companion.tabs
 import co.credibanco.transactionstest.ui.components.bottombar.BottomNavigationBar
-import co.credibanco.transactionstest.transactions.ui.transaction_annulment.TransactionAnnulmentScreen
 import co.credibanco.transactionstest.transactions.ui.transaction_authorization.TransactionAuthorizationScreen
 import co.credibanco.transactionstest.transactions.ui.transaction_find.TransactionFindScreen
 import co.credibanco.transactionstest.transactions.ui.transaction_list.TransactionListScreen
@@ -62,13 +61,6 @@ fun HomeScreen(
                 title = "Autorización de transacciones"
                 TransactionAuthorizationScreen(
                     modifier = modifierWithPadding.testTag("Tab ${BottomNavItem.TransactionAuthorization.id}")
-                )
-            }
-
-            slideTransitionComposable(BottomNavItem.TransactionAnnulment) {
-                title = "Anulación de transacciones"
-                TransactionAnnulmentScreen(
-                    modifier = modifierWithPadding.testTag("Tab ${BottomNavItem.TransactionAnnulment.id}")
                 )
             }
 

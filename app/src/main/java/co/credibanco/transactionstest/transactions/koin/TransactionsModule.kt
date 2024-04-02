@@ -7,6 +7,8 @@ import co.credibanco.transactionstest.providers.DispatcherProvider
 import co.credibanco.transactionstest.transactions.data.TransactionsRepository
 import co.credibanco.transactionstest.transactions.data.TransactionsRepositoryImpl
 import co.credibanco.transactionstest.transactions.data.remote.TransactionsService
+import co.credibanco.transactionstest.transactions.ui.transaction_authorization.TransactionAuthorizationViewModel
+import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
@@ -35,4 +37,7 @@ val TRANSACTION_MODULE = module {
 
     // TransactionsRepository instance
     singleOf(::TransactionsRepositoryImpl) { bind<TransactionsRepository>() }
+
+    // TransactionAuthorizationViewModel instance
+    viewModelOf(::TransactionAuthorizationViewModel)
 }

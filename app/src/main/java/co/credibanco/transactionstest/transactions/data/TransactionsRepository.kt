@@ -5,6 +5,7 @@ import co.credibanco.transactionstest.transactions.data.local.TransactionDao
 import co.credibanco.transactionstest.transactions.data.local.model.TransactionStatusEntity
 import co.credibanco.transactionstest.transactions.data.local.model.toTransaction
 import co.credibanco.transactionstest.transactions.data.remote.TransactionsService
+import co.credibanco.transactionstest.transactions.data.remote.model.authorization.AuthorizationResult
 import co.credibanco.transactionstest.transactions.model.Response
 import co.credibanco.transactionstest.transactions.model.Transaction
 import co.credibanco.transactionstest.transactions.model.annul
@@ -12,6 +13,7 @@ import co.credibanco.transactionstest.transactions.model.authorize
 import co.credibanco.transactionstest.transactions.model.toAnnulmentRequest
 import co.credibanco.transactionstest.transactions.model.toAuthorizationRequest
 import co.credibanco.transactionstest.transactions.model.toTransactionEntity
+import com.google.gson.GsonBuilder
 import kotlinx.coroutines.withContext
 
 interface TransactionsRepository {
@@ -28,31 +30,42 @@ class TransactionsRepositoryImpl(
 ): TransactionsRepository {
     override suspend fun postAuthorization(transaction: Transaction): Response<Transaction> =
         withContext(dispatcherProvider.getIO()) {
-            val transactionDb = transactionsDao.findTransactionById(
-                id = transaction.id
-            )
-
-            if (transactionDb != null) {
-                return@withContext Response.Failure(Exception(TRANSACTION_ALREADY_AUTHORIZED))
-            }
-
-            val response = transactionsService.postAuthorization(
-                authorizationRequest = transaction.toAuthorizationRequest()
-            )
-            val authorizationResult = response.body()
-            return@withContext if (response.isSuccessful && authorizationResult != null) {
-                val transactionAuthorized = transaction.authorize(
-                    receiptId = authorizationResult.receiptId,
-                    rrn = authorizationResult.rrn
+            try {
+                val transactionDb = transactionsDao.findTransactionById(
+                    id = transaction.id
                 )
 
-                transactionsDao.insertTransaction(
-                    transactionAuthorized.toTransactionEntity()
-                )
+                if (transactionDb != null) {
+                    return@withContext Response.Failure(Exception(TRANSACTION_ALREADY_AUTHORIZED))
+                }
 
-                Response.Success(transactionAuthorized)
-            } else {
-                Response.Failure(Exception(ERROR_POST_AUTHORIZATION))
+                val response = transactionsService.postAuthorization(
+                    authorizationRequest = transaction.toAuthorizationRequest()
+                )
+                val authorizationResult = response.body()
+                return@withContext if (response.isSuccessful && authorizationResult != null) {
+                    val transactionAuthorized = transaction.authorize(
+                        receiptId = authorizationResult.receiptId,
+                        rrn = authorizationResult.rrn
+                    )
+
+                    transactionsDao.insertTransaction(
+                        transactionAuthorized.toTransactionEntity()
+                    )
+
+                    Response.Success(transactionAuthorized)
+                } else {
+                    val gson = GsonBuilder().create()
+                    val errorBody = response.errorBody()
+                    if (errorBody != null) {
+                        val errorData = gson.fromJson(errorBody.charStream(), AuthorizationResult::class.java)
+                        Response.Failure(Exception("${errorData.statusCode} - ${errorData.statusDescription}"))
+                    } else {
+                        Response.Failure(Exception(ERROR_POST_AUTHORIZATION))
+                    }
+                }
+            } catch (e: Exception) {
+                Response.Failure(e)
             }
         }
 

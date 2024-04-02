@@ -1,6 +1,7 @@
 package co.credibanco.transactionstest.transactions.ui.transaction_list
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -12,7 +13,7 @@ fun TransactionListScreen(
     transitionToDetail: (String) -> Unit
 ) {
     Column(
-        modifier = modifier
+        modifier = modifier.fillMaxSize()
     ) {
         Text(text = "Transaction List")
 

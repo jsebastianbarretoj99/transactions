@@ -2,7 +2,6 @@ package co.credibanco.transactionstest.ui.components.bottombar
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -25,12 +24,6 @@ sealed class BottomNavItem(
         icon = Icons.Default.CheckCircle,
         label = "Autorización"
     )
-    data object TransactionAnnulment : BottomNavItem(
-        route = "transaction_annulment",
-        id = 2,
-        icon = Icons.Default.Delete,
-        label = "Anulación"
-    )
     data object TransactionFind : BottomNavItem(
         route = "transaction_find",
         id = 3,
@@ -42,7 +35,6 @@ sealed class BottomNavItem(
         val tabs = listOf(
             TransactionList,
             TransactionAuthorization,
-            TransactionAnnulment,
             TransactionFind
         )
     }
