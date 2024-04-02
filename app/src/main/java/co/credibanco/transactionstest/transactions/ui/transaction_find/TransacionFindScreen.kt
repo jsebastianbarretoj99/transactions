@@ -31,7 +31,6 @@ fun TransactionFindScreen(
     viewModel: TransactionFindViewModel = getViewModel(),
     transitionToDetail: (String) -> Unit
 ) {
-
     val screenData by viewModel.transactionFindScreenData.collectAsState()
     val context = LocalContext.current
 
