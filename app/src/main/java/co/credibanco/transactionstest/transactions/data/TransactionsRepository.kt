@@ -18,9 +18,14 @@ import kotlinx.coroutines.withContext
 
 interface TransactionsRepository {
     suspend fun postAuthorization(transaction: Transaction): Response<Transaction>
+
     suspend fun postAnnulment(transaction: Transaction): Response<Transaction>
+
     suspend fun findTransactionByReceiptId(receiptId: String): Response<Transaction>
+
     suspend fun getTransactions(): Response<List<Transaction>>
+
+    suspend fun getReceiptIdAllTransactions(): Response<List<String>>
 }
 
 class TransactionsRepositoryImpl(
@@ -106,8 +111,15 @@ class TransactionsRepositoryImpl(
     override suspend fun getTransactions(): Response<List<Transaction>> = withContext(
         dispatcherProvider.getIO()
     ) {
-        val transactions = transactionsDao.getTransactions().map { it.toTransaction() }
-        return@withContext Response.Success(transactions)
+        return@withContext Response.Success(
+            transactionsDao.getTransactions().map { it.toTransaction() }
+        )
+    }
+
+    override suspend fun getReceiptIdAllTransactions(): Response<List<String>> = withContext(
+        dispatcherProvider.getIO()
+    ) {
+        return@withContext Response.Success(transactionsDao.getReceiptIdAllTransactions())
     }
 
     companion object {

@@ -8,6 +8,7 @@ import co.credibanco.transactionstest.transactions.data.TransactionsRepository
 import co.credibanco.transactionstest.transactions.data.TransactionsRepositoryImpl
 import co.credibanco.transactionstest.transactions.data.remote.TransactionsService
 import co.credibanco.transactionstest.transactions.ui.transaction_authorization.TransactionAuthorizationViewModel
+import co.credibanco.transactionstest.transactions.ui.transaction_find.TransactionFindViewModel
 import co.credibanco.transactionstest.transactions.ui.transaction_list.TransactionListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.bind
@@ -44,4 +45,7 @@ val TRANSACTION_MODULE = module {
 
     // TransactionListViewModel instance
     viewModelOf(::TransactionListViewModel)
+
+    // TransactionFindViewModel instance
+    viewModelOf(::TransactionFindViewModel)
 }

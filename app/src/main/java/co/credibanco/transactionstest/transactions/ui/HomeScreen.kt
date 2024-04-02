@@ -67,7 +67,9 @@ fun HomeScreen(
             slideTransitionComposable(BottomNavItem.TransactionFind) {
                 title = "Buscar transacciones"
                 TransactionFindScreen(
-                    modifier = modifierWithPadding.testTag("Tab ${BottomNavItem.TransactionFind.id}")
+                    modifier = modifierWithPadding
+                        .testTag("Tab ${BottomNavItem.TransactionFind.id}"),
+                    transitionToDetail = transitionToDetail,
                 )
             }
         }
