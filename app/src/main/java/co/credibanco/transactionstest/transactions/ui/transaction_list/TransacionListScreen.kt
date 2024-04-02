@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -28,8 +29,14 @@ fun TransactionListScreen(
     val verticalArrangement = if (screenData is TransactionListScreenData.Transactions)
         Arrangement.Top else Arrangement.Center
 
+    LaunchedEffect(key1 = Unit) {
+        viewModel.getTransactions()
+    }
+
     Column(
-        modifier = modifier.padding(top = 16.dp).fillMaxSize(),
+        modifier = modifier
+            .padding(top = 16.dp)
+            .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = verticalArrangement,
     ) {

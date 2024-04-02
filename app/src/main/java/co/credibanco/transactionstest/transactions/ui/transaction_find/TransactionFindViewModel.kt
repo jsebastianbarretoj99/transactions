@@ -75,7 +75,7 @@ class TransactionFindViewModel(
         )
     }
 
-    init {
+    fun getReceiptIdAllTransactions() {
         viewModelScope.launch {
             transactionsRepository.getReceiptIdAllTransactions().let { response ->
                 receiptIds = when (response) {

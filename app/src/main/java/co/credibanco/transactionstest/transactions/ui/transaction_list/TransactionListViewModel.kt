@@ -18,8 +18,9 @@ class TransactionListViewModel(
 
     val transactionListScreenData = _transactionListScreenData.asStateFlow()
 
-    init {
+    fun getTransactions() {
         viewModelScope.launch {
+            _transactionListScreenData.value = TransactionListScreenData.Loading
             transactionsRepository.getTransactions().let { response ->
                 _transactionListScreenData.value = when (response) {
                     is Response.Success -> {

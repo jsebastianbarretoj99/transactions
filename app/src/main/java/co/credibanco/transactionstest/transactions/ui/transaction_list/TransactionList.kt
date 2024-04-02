@@ -68,7 +68,7 @@ fun TransactionItem(
             modifier = Modifier.weight(0.8f),
         ) {
             Text("${transaction.commerceCode} - ${transaction.terminalCode}")
-            Text("Valor: ${transaction.amount}")
+            Text("Valor: $${transaction.amount}")
             Text("Tarjeta: ${transaction.card.hideCardNumber()}")
         }
 

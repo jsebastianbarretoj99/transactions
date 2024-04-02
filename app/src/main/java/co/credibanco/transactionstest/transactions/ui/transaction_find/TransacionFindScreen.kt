@@ -34,6 +34,10 @@ fun TransactionFindScreen(
     val screenData by viewModel.transactionFindScreenData.collectAsState()
     val context = LocalContext.current
 
+    LaunchedEffect(key1 = Unit) {
+        viewModel.getReceiptIdAllTransactions()
+    }
+
     LaunchedEffect(key1 = screenData.transactionFindData.goToDetail) {
         if(screenData.transactionFindData.goToDetail) {
             viewModel.updateGoToDetail()

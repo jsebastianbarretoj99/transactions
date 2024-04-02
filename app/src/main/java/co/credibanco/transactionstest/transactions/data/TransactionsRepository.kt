@@ -123,10 +123,10 @@ class TransactionsRepositoryImpl(
     }
 
     companion object {
-        const val ERROR_POST_AUTHORIZATION = "Failed to post authorization"
-        const val ERROR_POST_ANNULMENT = "Failed to post annulment"
-        const val TRANSACTION_ALREADY_AUTHORIZED = "Transaction already authorized"
-        const val TRANSACTION_NOT_FOUND = "Transaction not found"
-        const val TRANSACTION_ALREADY_ANNULLED = "Transaction already annulled"
+        const val ERROR_POST_AUTHORIZATION = "No se pudo publicar la autorización"
+        const val ERROR_POST_ANNULMENT = "No se pudo publicar la anulación"
+        const val TRANSACTION_ALREADY_AUTHORIZED = "Transacción ya autorizada"
+        const val TRANSACTION_NOT_FOUND = "Transacción no encontrada"
+        const val TRANSACTION_ALREADY_ANNULLED = "Transacción ya anulada"
     }
 }

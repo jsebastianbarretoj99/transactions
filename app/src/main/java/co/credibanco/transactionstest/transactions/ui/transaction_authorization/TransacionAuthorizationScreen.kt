@@ -82,7 +82,7 @@ fun TransactionAuthorizationScreen(
             },
             required = true,
             validateRequired = validateRequired,
-            label = "Monto",
+            label = "Valor",
         )
 
         TransactionNumberField(
