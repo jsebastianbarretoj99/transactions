@@ -12,12 +12,14 @@ sealed class TransactionAuthorizationScreenData(
 
     data class TransactionAuthorized(
         override val message: String,
-        override val transaction: Transaction
+        override val transaction: Transaction,
+        val showToast: Boolean
     ) : TransactionAuthorizationScreenData(message, transaction)
 
     data class Error(
         override val message: String,
-        override val transaction: Transaction
+        override val transaction: Transaction,
+        val showToast: Boolean
     ) : TransactionAuthorizationScreenData(message, transaction)
 
     data class Loading(

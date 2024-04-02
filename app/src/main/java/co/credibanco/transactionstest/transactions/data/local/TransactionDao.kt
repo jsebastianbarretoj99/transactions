@@ -8,7 +8,7 @@ import co.credibanco.transactionstest.transactions.data.local.model.TransactionE
 
 @Dao
 interface TransactionDao {
-    @Query("SELECT * FROM transactions")
+    @Query("SELECT * FROM transactions WHERE status = 'APPROVED'")
     suspend fun getTransactions(): List<TransactionEntity>
     @Insert
     suspend fun insertTransaction(transaction: TransactionEntity)

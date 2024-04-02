@@ -109,16 +109,25 @@ fun TransactionAuthorizationScreen(
             }
         )
 
-        when(screenData) {
+        when (screenData) {
             is TransactionAuthorizationScreenData.Loading -> {
                 TransactionCircularProgressIndicator()
             }
 
             is TransactionAuthorizationScreenData.TransactionFormData -> {}
 
-            is TransactionAuthorizationScreenData.TransactionAuthorized,
-            is TransactionAuthorizationScreenData.Error-> {
-                context.showLongToast(screenData.message)
+            is TransactionAuthorizationScreenData.TransactionAuthorized  -> {
+                if ((screenData as TransactionAuthorizationScreenData.TransactionAuthorized).showToast) {
+                    viewModel.updateShowToast()
+                    context.showLongToast(screenData.message)
+                }
+            }
+
+            is TransactionAuthorizationScreenData.Error -> {
+                if ((screenData as TransactionAuthorizationScreenData.Error).showToast) {
+                    viewModel.updateShowToast()
+                    context.showLongToast(screenData.message)
+                }
             }
         }
     }

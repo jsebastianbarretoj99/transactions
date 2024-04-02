@@ -75,7 +75,8 @@ class TransactionAuthorizationViewModel(
             if (transaction.id.isEmpty() || transaction.amount.isEmpty() || transaction.card.isEmpty()) {
                 _transactionAuthorizationScreenData.value = TransactionAuthorizationScreenData.Error(
                     message = "Error: Todos los campos son requeridos",
-                    transaction = transaction
+                    transaction = transaction,
+                    showToast = true,
                 )
                 delay(200)
                 _transactionAuthorizationScreenData.value = TransactionAuthorizationScreenData.TransactionFormData(
@@ -91,14 +92,16 @@ class TransactionAuthorizationViewModel(
                             TransactionAuthorizationScreenData.TransactionAuthorized(
                                 message = "Transaction authorized with receipt ${transaction.receiptId} " +
                                         "and RRN ${transaction.rrn}",
-                                transaction = transaction
+                                transaction = transaction,
+                                showToast = true,
                             )
                         }
 
                         is Response.Failure -> {
                             TransactionAuthorizationScreenData.Error(
                                 message = "Error: ${response.error?.message ?: "Failed to authorize transaction"}",
-                                transaction = transaction
+                                transaction = transaction,
+                                showToast = true,
                             )
                         }
                     }
@@ -131,6 +134,22 @@ class TransactionAuthorizationViewModel(
                 card = card
             )
         )
+    }
+
+    fun updateShowToast() {
+        if (_transactionAuthorizationScreenData.value is TransactionAuthorizationScreenData.TransactionAuthorized) {
+            _transactionAuthorizationScreenData.value = TransactionAuthorizationScreenData.TransactionAuthorized(
+                message = "",
+                transaction = _transactionAuthorizationScreenData.value.transaction,
+                showToast = false
+            )
+        } else if (_transactionAuthorizationScreenData.value is TransactionAuthorizationScreenData.Error) {
+            _transactionAuthorizationScreenData.value = TransactionAuthorizationScreenData.Error(
+                message = "",
+                transaction = _transactionAuthorizationScreenData.value.transaction,
+                showToast = false
+            )
+        }
     }
 
     companion object {
