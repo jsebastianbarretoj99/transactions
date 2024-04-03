@@ -75,6 +75,10 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
 
+### Kotlin
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
+
 ### Mockk
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 
@@ -101,5 +105,6 @@ compose = [
 ]
 coroutines = ["androidx-core-ktx", "androidx-lifecycle-runtime-ktx", "kotlinx-coroutines-android"]
 koin = ["koin-android", "koin-androidx-compose"]
+kotlin-test = ["kotlin-test", "kotlin-test-junit"]
 retrofit2 = ["converter-gson", "retrofit2"]
 room = ["room", "room-ktx"]

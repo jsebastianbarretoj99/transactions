@@ -69,6 +69,9 @@ dependencies {
     // Koin
     implementation(libs.bundles.koin)
 
+    // Kotlin
+    testImplementation(libs.bundles.kotlin.test)
+
     // Mockk
     testImplementation(libs.mockk)
 
