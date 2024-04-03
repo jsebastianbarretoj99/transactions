@@ -10,6 +10,11 @@ un microservicio basado en Kotlin con Spring Boot a través de APIs HTTP.
 3. **Listar Todas las Transacciones Autorizadas:** Muestra una lista de todas las transacciones autorizadas almacenadas localmente en el dispositivo, junto con sus detalles.
 4. **Cancelación de Transacciones:** Los usuarios pueden cancelar transacciones autorizadas buscándolas utilizando sus números de recibo. Tras la confirmación, el estado de la transacción se actualiza localmente y no se puede cancelar de nuevo.
 
+## Demo
+|Prueba Uno|Prueba Dos|
+|---|---|
+|<img src="https://github.com/jsebastianbarretoj99/transactions/assets/63886423/35610f28-6fdc-4fc6-87bc-a348dc4cfae9" width="300"/>|<img src="https://github.com/jsebastianbarretoj99/transactions/assets/63886423/823b6cca-9a58-429f-906b-a0ccccd657c1" width="300"/>|
+
 ## Stack Tecnológico
 - Kotlin
 - Jetpack Compose
