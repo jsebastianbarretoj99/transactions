@@ -1,4 +1,4 @@
-# Transacciones para Credibanco
+# Transacciones
 Esta aplicación Android permite a los usuarios realizar varias operaciones relacionadas con 
 transacciones para Credibanco, incluyendo autorización, cancelación, búsqueda por número de recibo 
 y listado de todas las transacciones autorizadas. Se comunica con un servidor backend que ejecuta 
